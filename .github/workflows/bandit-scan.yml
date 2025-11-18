@@ -1,0 +1,22 @@
+    name: Security Scan - Bandit
+
+    on:
+      push:
+        branches: [ main, develop ]
+      pull_request:
+        branches: [ main, develop ]
+        
+    jobs:
+      bandit_scan:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v4
+
+          - name: Run Bandit Security Scan
+            uses: PyCQA/bandit-action@v1 # Or another Bandit action
+            with:
+              path: '.'
+              level: 'HIGH'
+              confidence: 'HIGH'
+              excluded_paths: 'tests/,docs/'
+              ignore_failure: false # Set to true to allow workflow to pass even with findings
