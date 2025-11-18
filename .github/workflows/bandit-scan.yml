@@ -16,7 +16,7 @@
           - uses: actions/checkout@v4
 
           - name: Run Bandit Security Scan
-            uses: shundor/bandit-action@v1 # Or another Bandit action
+            uses: PyCQA/bandit-action@v1 # Or another Bandit action
             with:
               path: '.'
               level: high
